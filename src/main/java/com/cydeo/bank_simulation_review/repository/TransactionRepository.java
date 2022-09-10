@@ -1,7 +1,6 @@
 package com.cydeo.bank_simulation_review.repository;
 
 
-import com.cydeo.bank_simulation_review.entity.Account;
 import com.cydeo.bank_simulation_review.entity.Transaction;
 import org.springframework.stereotype.Component;
 

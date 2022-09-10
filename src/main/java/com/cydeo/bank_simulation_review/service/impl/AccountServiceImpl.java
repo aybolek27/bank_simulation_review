@@ -1,11 +1,11 @@
 package com.cydeo.bank_simulation_review.service.impl;
 
 import com.cydeo.bank_simulation_review.entity.Account;
+import com.cydeo.bank_simulation_review.enums.AccountStatus;
 import com.cydeo.bank_simulation_review.enums.AccountType;
 import com.cydeo.bank_simulation_review.repository.AccountRepository;
 import com.cydeo.bank_simulation_review.service.AccountService;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,8 +24,8 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public Account createNewAccount(BigDecimal balance, Date creationDate, AccountType accountType, Long userId) {
-        Account account=Account.builder().id(UUID.randomUUID()).userId(userId).accountType(accountType).balance(balance).creationDate(creationDate).build();
+    public Account createNewAccount(BigDecimal balance, Date creationDate, AccountType accountType, Long userId, AccountStatus accountStatus) {
+        Account account=Account.builder().id(UUID.randomUUID()).userId(userId).accountType(accountType).balance(balance).creationDate(creationDate).accountStatus(accountStatus).build();
         return accountRepository.save(account);
     }
 
