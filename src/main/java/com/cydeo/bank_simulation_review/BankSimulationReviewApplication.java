@@ -1,7 +1,6 @@
 package com.cydeo.bank_simulation_review;
 
-import com.cydeo.bank_simulation_review.entity.Account;
-import com.cydeo.bank_simulation_review.enums.AccountStatus;
+import com.cydeo.bank_simulation_review.model.Account;
 import com.cydeo.bank_simulation_review.enums.AccountType;
 import com.cydeo.bank_simulation_review.service.AccountService;
 import com.cydeo.bank_simulation_review.service.TransactionService;
@@ -23,8 +22,8 @@ public class BankSimulationReviewApplication {
         AccountService accountService= applicationContext.getBean(AccountServiceImpl.class);
         TransactionService transactionService=applicationContext.getBean(TransactionService.class);
 
-        Account receiver= accountService.createNewAccount(BigDecimal.TEN, new Date(), AccountType.CHECKING, 1L, AccountStatus.ACTIVE);
-        Account sender=accountService.createNewAccount(new BigDecimal(70), new Date(), AccountType.CHECKING, 2L, AccountStatus.ACTIVE);
+        Account receiver= accountService.createNewAccount(BigDecimal.TEN, new Date(), AccountType.CHECKING, 1L);
+        Account sender=accountService.createNewAccount(new BigDecimal(1000), new Date(), AccountType.CHECKING, 2L);
 
         accountService.listAllAccount().forEach(System.out::println);
 
@@ -38,6 +37,7 @@ public class BankSimulationReviewApplication {
 
         System.out.println(transactionService.findAll().get(1));
         accountService.listAllAccount().forEach(System.out::println);
+
 
 
 

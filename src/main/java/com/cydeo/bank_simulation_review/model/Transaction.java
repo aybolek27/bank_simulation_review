@@ -1,4 +1,4 @@
-package com.cydeo.bank_simulation_review.entity;
+package com.cydeo.bank_simulation_review.model;
 
 import lombok.Builder;
 import lombok.Data;

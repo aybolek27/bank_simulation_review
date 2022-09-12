@@ -1,7 +1,7 @@
 package com.cydeo.bank_simulation_review.service.impl;
 
-import com.cydeo.bank_simulation_review.entity.Account;
-import com.cydeo.bank_simulation_review.entity.Transaction;
+import com.cydeo.bank_simulation_review.model.Account;
+import com.cydeo.bank_simulation_review.model.Transaction;
 import com.cydeo.bank_simulation_review.enums.AccountType;
 import com.cydeo.bank_simulation_review.exceptions.AccountOwnerShipException;
 import com.cydeo.bank_simulation_review.exceptions.BadRequestException;
@@ -102,5 +102,15 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> findAll() {
         return transactionRepository.findAll();
+    }
+
+    @Override
+    public List<Transaction> retrieveLastTransaction() {
+        return transactionRepository.retrieveLastTransactions();
+    }
+
+    @Override
+    public List<Transaction> findTransactionListById(UUID id) {
+        return transactionRepository.findTransactionListById(id);
     }
 }

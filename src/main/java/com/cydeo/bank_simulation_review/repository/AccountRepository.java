@@ -1,6 +1,7 @@
 package com.cydeo.bank_simulation_review.repository;
 
-import com.cydeo.bank_simulation_review.entity.Account;
+import com.cydeo.bank_simulation_review.model.Account;
+import com.cydeo.bank_simulation_review.enums.AccountStatus;
 import com.cydeo.bank_simulation_review.exceptions.RecordNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -27,5 +28,9 @@ public class AccountRepository {
 
         return accountList.stream().filter(account -> account.getId().equals(accountId)).findAny().orElseThrow(()-> new RecordNotFoundException("This account is not in database"));
 
+    }
+
+    public void deleteAccount(UUID userId) {
+       findById(userId).setAccountStatus(AccountStatus.DELETED);
     }
 }
