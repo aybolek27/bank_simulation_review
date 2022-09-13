@@ -23,6 +23,7 @@ public class Account {
     @NotNull
     private AccountType accountType;
     private Date creationDate;
+    @NotNull
     private Long userId;
     private AccountStatus accountStatus;
 

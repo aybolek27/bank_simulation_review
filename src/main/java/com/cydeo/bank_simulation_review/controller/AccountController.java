@@ -7,8 +7,10 @@ import com.cydeo.bank_simulation_review.service.AccountService;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.UUID;
 
@@ -38,7 +40,11 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public String createAccount(@ModelAttribute("account")Account account, Model model){
+    public String createAccount(@Valid @ModelAttribute("account")Account account, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("accountTypes", AccountType.values());
+            return "account/create-account";
+        }
         accountService.createNewAccount(account.getBalance(), new Date(), account.getAccountType(), account.getUserId());
         model.addAttribute("accountList",  accountService.listAllAccount());
         return "redirect:/index";
